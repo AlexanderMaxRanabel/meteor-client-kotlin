@@ -2,6 +2,7 @@ plugins {
     id "fabric-loom" version "1.1-SNAPSHOT"
     id "maven-publish"
     id "com.github.johnrengelman.shadow" version "7.1.2"
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0-Beta'
 }
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
@@ -73,6 +74,7 @@ dependencies {
 
     // Launch sub project
     shadow project(":launch")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 loom {
@@ -166,4 +168,7 @@ publishing {
             }
         }
     }
+}
+kotlin {
+    jvmToolchain(11)
 }
